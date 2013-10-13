@@ -1,4 +1,4 @@
-﻿//fonction de choix de roles
+//fonction de choix de roles
     function ChoixRole(){
         
         $monSelect=document.getElementById('role');//rÃ©cupÃ©ration de la valeur du roles
@@ -42,7 +42,7 @@ if (document.getElementById('prenom').value=="")
 	}
 if (document.getElementById('tel').value=="")
 	{
-	alert("Veuillez indiquer votre tÃ©lÃ©phone.");
+	alert("Veuillez indiquer votre téléphone.");
 	ok=0;
 	document.getElementById('tel').focus();
 	return false;
@@ -227,8 +227,103 @@ if (ok==1) {
 }
 
 
+
+function validerStage2()
+{
+var ok=1;
+
+
+if (document.getElementById('dateDeb').value==="")
+	{
+	alert("Veuillez choisir une date de début pour le stage.");
+	ok=0;
+	document.getElementById('dateDeb').focus();
+	return false;
+	}
+if (document.getElementById('dateFin').value=="")
+	{
+	alert("Veuillez choisir une date de fin pour le stage.");
+	ok=0;
+	document.getElementById('dateFin').focus();
+	return false;
+	}
+if (document.getElementById('dateFin').value== document.getElementById('dateDeb').value){
+    alert("la date de début et la date de fin du stage doivent être différentes");
+    ok=0;
+    document.getElementById('dateFin').focus();
+    return false;
+}
+        
+if (document.getElementById('Professeur').value=="")
+	{
+	alert("Veuillez choisir un professeur référant");
+	ok=0;
+	document.getElementById('Professeur').focus();
+	return false;
+	}
+if (document.getElementById('AnneeScol').value=="")
+	{
+	alert("Veuillez choisir l'année scolaire concernée");
+	ok=0;
+	document.getElementById('AnneeScol').focus();
+	return false;
+	}
+
+if (document.getElementById('choixEntrepriseStage').value=="")
+	{
+	alert("Veuillez indiquer l'entreprise.");
+	ok=0;	
+	return false;
+	}
+if (document.getElementById('ville').value=="")
+	{
+	alert("Veuillez indiquer la ville où a été effectué le stage");
+	ok=0;
+	document.getElementById('ville').focus();
+	return false;
+	}
+if (document.getElementById('choixMaitreStage').value=="")
+	{
+	alert("Vous n'avez pas choisi le maitre de stage");
+	ok=0;
+	return false;
+	}
+        
+        
+        
+
+
+if (ok==1) {
+	
+	document.submit();
+        
+	}
+        
+}
+
+function validerStage1(){
+    
+    var ok=1;
+
+
+if (document.getElementById('choixEleve').value=="")
+	{
+	alert("Veuillez choisir un élève");
+	ok=0;
+	document.getElementById('choixEleve').focus();
+	return false;
+	} 
+
+
+if (ok==1) {
+	
+	document.submit();
+        
+	}
+    
+}
       
-    // donction d'impretion
+    // fonction d'impression
     //function imprimer(){
          ///var impression=document.creatElement("a");
           /// var test_impression=document.createTextNode("Imprimer La sÃ©lection");

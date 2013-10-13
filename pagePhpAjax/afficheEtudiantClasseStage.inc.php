@@ -29,7 +29,7 @@
         }
         echo"</select>";
         
-        echo"<input type='submit' name='boutonEtape2' id='boutonEtape2' value='passer à  la 2eme Ã©tape'></input>";
+        echo"<input type='submit' name='boutonEtape2' id='boutonEtape2' value='passer à  la 2eme Ã©tape' onClick='return validerStage1();'></input>";
         
         
         ?>

@@ -297,8 +297,27 @@ class C_Utilisateur extends Controleur{
       function validerAjoutStage(){
         
         $this->vue->titreVue = "ajout d'un stage";
-        $stage = new M_LesDonneesCreationStage();       
-        
+        $stage = new M_LesDonneesCreationStage();
+        $dateVStage="";
+        $bilan = "";
+        $ressources = "";
+        $commentaire="";
+        $divers="";
+        if (isset($_POST["dateVStage"])){
+            $dateVStage = $_POST["dateVStage"];
+        }
+        if (isset($_POST["bilan"])){
+            $bilan = $_POST["bilan"];
+        }
+        if (isset($_POST["ressources"])){
+            $ressources = $_POST["ressources"];
+        }
+        if (isset($_POST["commentaire"])){
+            $commentaire = $_POST["commentaire"];
+        }
+        if (isset($_POST["divers"])){
+            $divers = $_POST["divers"];
+        }
         
         // prÃ©parer la liste des paramÃ¨tres
         $lesParametres = array();
@@ -308,14 +327,14 @@ class C_Utilisateur extends Controleur{
         $lesParametres[2] = $_POST["Professeur"];
         $lesParametres[3] = $_POST["choixEntrepriseStage"];
         $lesParametres[4] = $_POST["choixMaitreStage"];
-        $lesParametres[5] = $_POST["dateVStage"];
+        $lesParametres[5] = $dateVStage;
         $lesParametres[6] = $_POST["dateDeb"]; 
         $lesParametres[7] = $_POST["dateFin"]; 
         $lesParametres[8] = $_POST["ville"];
-        $lesParametres[9] = $_POST["divers"];
-        $lesParametres[10] = $_POST["bilan"];
-        $lesParametres[11] = $_POST["ressources"];
-        $lesParametres[12] = $_POST["commentaire"];
+        $lesParametres[9] = $divers;
+        $lesParametres[10] = $bilan;
+        $lesParametres[11] = $ressources;
+        $lesParametres[12] = $commentaire;
         $lesParametres[13] = $_POST["participation"];
          $ok = $stage->insert($lesParametres);
         

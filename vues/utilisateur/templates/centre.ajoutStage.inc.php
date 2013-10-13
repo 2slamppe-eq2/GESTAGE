@@ -31,9 +31,7 @@
             </div>
         
         
-            <div id="FormulaireOption">
-            <!-- dic qui contiendra le selec d'option en lien Ã  la fonction affichageClasse -->   
-            </div>
+            
         
             <input id="boutonAfficher" type='button' value="Afficher cette classe" ></input>
             

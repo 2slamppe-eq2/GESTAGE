@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1><?php echo $this->message ?></h1>
-        <input type="button" value="Retour" onclick="history.go(-1)">
+        <input type="button" value="Retour" onclick="history.go(-2)">
     </body>
 </html>
 

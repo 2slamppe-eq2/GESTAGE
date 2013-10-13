@@ -1,4 +1,4 @@
-﻿//fonction Jquery d'affichage de classe 
+//fonction Jquery d'affichage de classe 
    jQuery(document).ready(function($){
          $('#etudes').change(function() {
              var value='';
@@ -19,26 +19,26 @@
                
          });
       });
-   //Fonction Jquery d'affichage d'option'
-      jQuery(document).ready(function($){
-         $('#etudes').change(function() {
-             var value='';
-             value=$('#etudes').val();
-             
-            $.ajax({
-                   type:"GET",
-                   url:"../pagePhpAjax/afficheOption.inc.php",
-                   data:"value="+value,
-                   
-                   success: function(retour){
-		   $("#FormulaireOption").html('').html(retour);
-                   }
-                   
-               });
-             
-               
-         });
-      });
+//   //Fonction Jquery d'affichage d'option'
+//      jQuery(document).ready(function($){
+//         $('#etudes').change(function() {
+//             var value='';
+//             value=$('#etudes').val();
+//             
+//            $.ajax({
+//                   type:"GET",
+//                   url:"../pagePhpAjax/afficheOption.inc.php",
+//                   data:"value="+value,
+//                   
+//                   success: function(retour){
+//		   $("#FormulaireOption").html('').html(retour);
+//                   }
+//                   
+//               });
+//             
+//               
+//         });
+//      });
       
       //affiche les etudiant d'une classe pour l'admin'
       jQuery(document).ready(function($){
@@ -154,6 +154,23 @@
                
          });
       });
+      
+      $(function() {
+
+    $( "#dateDeb" ).datepicker();
+    $("#dateDeb").datepicker( "option", "dateFormat", "yy-mm-dd" );
+    $( "#dateDeb" ).datepicker( $.datepicker.regional[ "fr" ] );
+    
+    $( "#dateFin" ).datepicker();
+    $("#dateFin").datepicker( "option", "dateFormat", "yy-mm-dd" );
+    $( "#dateFin" ).datepicker( $.datepicker.regional[ "fr" ] );
+    
+    $( "#dateVStage" ).datepicker();
+    $("#dateVStage").datepicker( "option", "dateFormat", "yy-mm-dd" );
+    $( "#dateVStage" ).datepicker( $.datepicker.regional[ "fr" ] );
+  });
+
+
       
      
       
