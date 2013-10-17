@@ -14,7 +14,7 @@
         echo "<li><a href=\".?controleur=accueil&action=seDeconnecter\">Se d&eacute;connecter</a></li>";
         echo "<li><a href=\".?controleur=utilisateur&action=coordonees\">Mes informations</a></li>";
         echo "<li><a href=\".?controleur=utilisateur&action=afficherEntreprise\">Afficher Les entreprises prenant des stagiaires</a></li>";
-        
+        echo "<li><a href=\".?controleur=utilisateur&action=afficherStage\">Afficher les stages enregistrés</a></li>";
     }else{
         echo "<li><a href=\".?controleur=accueil&action=seConnecter\">Se connecter</a></li>";
     }  

@@ -346,5 +346,25 @@ class C_Utilisateur extends Controleur{
         $this->vue->afficher();
         
     }
+    function afficherStage(){
+        $this->vue->titreVue = 'Ensemble des stages enregistr&eacute;s';   
+        
+        $this->vue->loginAuthentification = MaSession::get('login');
+        
+        $lesStages = new M_ListeStages();
+        
+        $this->vue->lesStages = $lesStages->getAll();
+        
+        $this->vue->entete = "../vues/templates/entete.inc.php"; 
+                
+        $this->vue->gauche = "../vues/templates/gauche.inc.php"; 
+        
+        $this->vue->centre = "../vues/utilisateur/templates/centre.afficherStage.inc.php";
+        
+        $this->vue->pied = "../vues/templates/pied.inc.php";
+        
+        $this->vue->afficher();
+        
+    }
 }
 ?>
