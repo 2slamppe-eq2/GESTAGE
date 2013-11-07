@@ -2,13 +2,13 @@
     // connexion Ã  la base de donÃ©es
     $db=mysql_connect('localhost','root','joliverie');
     mysql_select_db('GESTAGE',$db);
-    //instantiation des donnÃ©e
+    //instantiation des variables
     $idEntreprise='';
     //rÃ©cupÃ©ration des donnÃ©e envoyer par jQuery
     if(isset($_GET['value3'])){
         $idEntreprise=$_GET['value3'];
     }
-    
+     //requete qui renvoit nom, prenom, id des maitres de stage correspondant à l'organisation sélectionnée
      $requet="SELECT p.NOM, p.PRENOM, p.IDPERSONNE ";
      $requet.="FROM PERSONNE p ";
      $requet.="INNER JOIN CONTACT_ORGANISATION c ON c.IDCONTACT = p.IDPERSONNE ";
