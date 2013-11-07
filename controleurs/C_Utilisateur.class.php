@@ -353,7 +353,7 @@ class C_Utilisateur extends Controleur{
         
         $lesStages = new M_ListeStages();
         
-        $this->vue->lesStages = $lesStages->getAll();
+        $this->vue->lesStages = $lesStages->getLesStages();
         
         $this->vue->entete = "../vues/templates/entete.inc.php"; 
                 

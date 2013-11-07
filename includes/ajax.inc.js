@@ -19,26 +19,7 @@
                
          });
       });
-//   //Fonction Jquery d'affichage d'option'
-//      jQuery(document).ready(function($){
-//         $('#etudes').change(function() {
-//             var value='';
-//             value=$('#etudes').val();
-//             
-//            $.ajax({
-//                   type:"GET",
-//                   url:"../pagePhpAjax/afficheOption.inc.php",
-//                   data:"value="+value,
-//                   
-//                   success: function(retour){
-//		   $("#FormulaireOption").html('').html(retour);
-//                   }
-//                   
-//               });
-//             
-//               
-//         });
-//      });
+
       
       //affiche les etudiant d'une classe pour l'admin'
       jQuery(document).ready(function($){
@@ -169,7 +150,51 @@
     $("#dateVStage").datepicker( "option", "dateFormat", "yy-mm-dd" );
     $( "#dateVStage" ).datepicker( $.datepicker.regional[ "fr" ] );
   });
+  
+  
+  //fonction Jquery d'affichage de stage
+   jQuery(document).ready(function($){
+         $('#recherche').change(function() {
+             var value='';
+             value=$('#recherche').val();
+             
+             
+            $.ajax({
+                   type:"GET",
+                   url:"../pagePhpAjax/afficheStage.php",
+                   data:"value="+value,
+                   
+                   success: function(retour){
+		   $("#tableauStageFiltre").html('').html(retour);
+                   }
+                   
+               });
+             
+               
+         });
+      });
 
+//fonction Jquery d'affichage de stage
+   jQuery(document).ready(function($){
+         $('#recherchevalid').click(function() {
+             var value='';
+             value=$('#recherche').val();
+             
+             
+            $.ajax({
+                   type:"GET",
+                   url:"../pagePhpAjax/afficheStage.php",
+                   data:"value="+value,
+                   
+                   success: function(retour){
+		   $("#tableauStageFiltre").html('').html(retour);
+                   }
+                   
+               });
+             
+               
+         });
+      });
 
       
      

@@ -20,7 +20,21 @@
     }     
    
     
-  
+  //fonction d'affichage ou non du tableau de stage par défaut
+     function trie(){
+        
+        $text=document.getElementById('recherche');//rÃ©cupÃ©ration du text contenu dans le champ recherche
+        $monDiv= document.getElementById('tableauStageDefaut');//formulaire qui sera modifier par la fonction
+      
+        if($text.value==""){
+            $monDiv.style.visibility='visible';
+            $monDiv.style.height="100%";
+        }else{
+            $monDiv.style.visibility='hidden';
+        }
+       
+      
+    } 
   // validation crÃ©ation utilisateur
   function valider()
 {
