@@ -135,7 +135,8 @@
                
          });
       });
-      
+
+//calendrier pour le choix des dates de stage
       $(function() {
 
     $( "#dateDeb" ).datepicker();
@@ -174,8 +175,8 @@
          });
       });
 
-//fonction Jquery d'affichage de stage
-   jQuery(document).ready(function($){
+//fonction de recherche des stage
+jQuery(document).ready(function($){
          $('#recherchevalid').click(function() {
              var value='';
              value=$('#recherche').val();
@@ -194,7 +195,7 @@
              
                
          });
-      });
+});
 
       
      

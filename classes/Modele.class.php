@@ -40,7 +40,7 @@ abstract class Modele {
     function getAll() {
         $pdo = $this->connecter();
         // RequÃªte textuelle
-        $query = "SELECT * FROM " . $this->table . " ORDER BY " . $this->clePrimaire . " DESC";
+        $query = "SELECT * FROM " . $this->table . ";";
         // ExÃ©cuter la requÃªte
         $resultSet = $pdo->query($query);
         // FETCH_CLASS permet de retourner des enregistrements sous forme d'objets de la classe spÃ©cifiÃ©e

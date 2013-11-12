@@ -266,16 +266,17 @@ class C_Utilisateur extends Controleur{
         $this->vue->titreVue = 'Ajouter un stage Etape 2';   
         
         $this->vue->loginAuthentification = MaSession::get('login');
-        
+        // récupération de la liste des entreprises
         $lesEntreprise = new M_ListeEntreprise();
         $this->vue->lesEntreprise = $lesEntreprise->getAll();
-        
+        //récupération de la liste des années scolaires
         $lesAnneesScol = new M_ListeAnneeScol();
         $this->vue->lesAnneesScol = $lesAnneesScol->getAll();
-        
+        // récupération de la liste des professeurs
         $lesProfesseurs = new M_ListePersonne();
         $this->vue->lesProfesseurs = $lesProfesseurs->getListeProfesseur();
         $eleve="";
+        //récupération de l'id de l'élève choisi dans le formulaire précédent
         if(isset($_POST['choixEleve'])){
             $eleve = $_POST['choixEleve'];
         }
@@ -297,12 +298,14 @@ class C_Utilisateur extends Controleur{
       function validerAjoutStage(){
         
         $this->vue->titreVue = "ajout d'un stage";
+        //instanciation des variables
         $stage = new M_LesDonneesCreationStage();
         $dateVStage="";
         $bilan = "";
         $ressources = "";
         $commentaire="";
         $divers="";
+        // récupération des valeurs renseignées dans le formulaire
         if (isset($_POST["dateVStage"])){
             $dateVStage = $_POST["dateVStage"];
         }
@@ -318,10 +321,10 @@ class C_Utilisateur extends Controleur{
         if (isset($_POST["divers"])){
             $divers = $_POST["divers"];
         }
-        
-        // prÃ©parer la liste des paramÃ¨tres
+        // création d'un tableau contenant toutes les valeurs à insérer
+       
         $lesParametres = array();
-        // rÃ©cupÃ©rer les donnÃ©es du formulaire
+        // rÃ©cupÃ©rer les données du formulaire
         $lesParametres[0] = $_POST["AnneeScol"];
         $lesParametres[1] = $_POST["eleveId"];
         $lesParametres[2] = $_POST["Professeur"];
@@ -336,8 +339,8 @@ class C_Utilisateur extends Controleur{
         $lesParametres[11] = $ressources;
         $lesParametres[12] = $commentaire;
         $lesParametres[13] = $_POST["participation"];
-         $ok = $stage->insert($lesParametres);
-        
+         $ok = $stage->insert($lesParametres);// insertion des valeurs dans la base
+        // affichage du message de réussite ou d'échec lors de l'insertion des données dans la base
         if ($ok) {
             $this->vue->message = "ajout du stage effectu&eacute;";
         } else {
@@ -346,6 +349,7 @@ class C_Utilisateur extends Controleur{
         $this->vue->afficher();
         
     }
+    //page d'affichage des stages
     function afficherStage(){
         $this->vue->titreVue = 'Ensemble des stages enregistr&eacute;s';   
         
@@ -354,6 +358,17 @@ class C_Utilisateur extends Controleur{
         $lesStages = new M_ListeStages();
         
         $this->vue->lesStages = $lesStages->getLesStages();
+        
+        $trier = getRequest("trier", false);
+        if($trier){
+            if(isset($_POST['trie'])){
+                $trie = $_POST['trie'];
+            }
+            if(isset($_POST['recherche'])){
+                $recherche = $_POST['recherche'];
+            }
+            $this->vue->lesStages = $lesStages->getLesStagesTrierRechercher($trie, $recherche);
+        }
         
         $this->vue->entete = "../vues/templates/entete.inc.php"; 
                 
@@ -366,5 +381,6 @@ class C_Utilisateur extends Controleur{
         $this->vue->afficher();
         
     }
+
 }
 ?>

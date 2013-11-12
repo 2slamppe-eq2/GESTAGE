@@ -17,24 +17,23 @@
         
                 
             }
-    }     
-   
+    }
     
-  //fonction d'affichage ou non du tableau de stage par défaut
-     function trie(){
+    function Trier(){
         
-        $text=document.getElementById('recherche');//rÃ©cupÃ©ration du text contenu dans le champ recherche
-        $monDiv= document.getElementById('tableauStageDefaut');//formulaire qui sera modifier par la fonction
-      
+        $text = document.getElementById('recherche');
+        $monDiv = document.getElementById('tableauStageDefaut');
+        
         if($text.value==""){
-            $monDiv.style.visibility='visible';
-            $monDiv.style.height="100%";
+            $monDiv.style.visibility = 'visible';
+            $monDiv.style.height = "100%";
+            
         }else{
-            $monDiv.style.visibility='hidden';
+            $monDiv.style.visibility = 'hidden';
         }
-       
-      
-    } 
+    }  
+    
+
   // validation crÃ©ation utilisateur
   function valider()
 {
@@ -246,7 +245,7 @@ function validerStage2()
 {
 var ok=1;
 
-
+//control si les valeurs sont bien présentes
 if (document.getElementById('dateDeb').value==="")
 	{
 	alert("Veuillez choisir une date de début pour le stage.");
@@ -319,7 +318,7 @@ function validerStage1(){
     
     var ok=1;
 
-
+//control si les valeurs sont bien présentes
 if (document.getElementById('choixEleve').value=="")
 	{
 	alert("Veuillez choisir un élève");
