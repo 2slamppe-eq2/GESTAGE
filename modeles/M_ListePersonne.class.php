@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class M_ListePersonne extends Modele {
 	protected $table='PERSONNE';
@@ -6,13 +6,13 @@ class M_ListePersonne extends Modele {
         
         function getListeProfesseur(){           
         $pdo = $this->connecter();
-        // RequÃªte textuelle
+        // Requête textuelle
         $query = "SELECT * FROM " . $this->table . " WHERE IDROLE='3'";
-        // ExÃ©cuter la requÃªte
+        // Exécuter la requête
         $resultSet = $pdo->query($query);
-        // FETCH_CLASS permet de retourner des enregistrements sous forme d'objets de la classe spÃ©cifiÃ©e
+        // FETCH_CLASS permet de retourner des enregistrements sous forme d'objets de la classe spécifiée
         // ici : $this->nomClasseMetier contient "Enregistrement"
-        // La classe Enregistrement est une classe gÃ©nÃ©rique vide qui sera automatiquement affublÃ©e d'autant
+        // La classe Enregistrement est une classe générique vide qui sera automatiquement affublée d'autant
         // d'attributs publics qu'il y a de colonnes dans le jeu d'enregistrements
         $retour = $resultSet->fetchAll(PDO::FETCH_CLASS, $this->nomClasseMetier);
         $this->deconnecter();

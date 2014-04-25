@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class M_ListeAnneeScol extends Modele {
 	protected $table='ANNEESCOL';

@@ -1,8 +1,8 @@
 ﻿ 
         <?php
         //connection Ã  la base de donnÃ©e 
-        $db=mysql_connect('localhost','root','joliverie');
-        mysql_select_db('GESTAGE',$db);
+        $db=mysql_connect('localhost','aballeng_gestage','aballenghien');
+        mysql_select_db('aballenghien_gestage',$db);
         //instantiation des variable
         $classe='';
         $option='';

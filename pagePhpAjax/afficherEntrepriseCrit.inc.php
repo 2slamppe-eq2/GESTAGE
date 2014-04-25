@@ -1,6 +1,6 @@
 ﻿     <?php
-        $db=mysql_connect('localhost','root','joliverie');
-        mysql_select_db('GESTAGE',$db);
+        $db=mysql_connect('localhost','aballeng_gestage','aballenghien');
+        mysql_select_db('aballenghien_gestage',$db);
         //instentiation des donnÃ©e
         $type='';
         $ville='';

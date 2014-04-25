@@ -2,7 +2,7 @@
 <script language="JavaScript" type="text/javascript" src="../includes/jquery.js"> </script>
 <script language="JavaScript" type="text/javascript" src="../includes/ajax.inc.js"> </script>
 <form action='index.php?controleur=utilisateur&action=afficherStage&trier=true&recherche=true' name='formulaireAfficherStage' id='FormulaireAfficherStage' method='POST'>
-     <h1>Tableau des entreprise</h1>
+     <h1>Tableau des Stages enregistrés</h1>
 <fieldset>
     
     <label for="recherche">faire une recherche</label>
@@ -28,14 +28,14 @@
     </select>
     <input type="submit" name="buttonTrier" id="buttonTrier" value="Trier"/>
     <div id="tableauStageDefaut" style="overflow-x: scroll; width:570px; border:none ;">
-    <table border="1">
+        <table border="1" cellspacing="0">
         <!-- tableau qui affiche tous les stages, les boutons input permettront de trier le tableau-->
-        <tr><th><input type="button" name="annee" id="annee" value="Ann&eacute;e scolaire"/></th><th><input type="button" name="etudiant" id="etudiant" value="Etudiant"/></th>
-            <th><input type="button" name="prof" id="prof" value="Professeur"/></th><th><input type="button" name="organisation" id="organisation" value="Organisation"/></th>
-            <th><input type="button" name="mtrStage" id="mtrStage" value="Maitre de stage"/></th><th><input type="button" name="datedeb" id="datedeb" value="Date de début"/>
-            </th><th><input type="button" name="datefin" id="datefin" value="Date de fin"/></th><th><input type="button" name="datevstage" id="datevstage" value="Date de visite de stage"/></th><th><input type="button" name="ville" id="ville" value="Ville"/>
-            </th><th>DIVERS</th><th>Bilan des travaux</th><th>Ressources et outils utilisés</th><th>Commentaires</th>
-            <th><input type="button" name="participationCCF" id="participationCCF" value="Participation aux CCF"/></th>
+        <tr><th>Ann&eacute;e scolaire</th><th>Etudiant</th>
+            <th>Professeur</th><th>Organisation</th>
+            <th>Maitre de stage</th><th>Date de début</th>
+            <th>Date de fin</th><th>Date de visite de stage</th><th>Ville</th>
+            <th>DIVERS</th><th>Bilan des travaux</th><th>Ressources et outils utilisés</th><th>Commentaires</th>
+            <th>Participation aux CCF</th>
             
         </tr>
       <?php 
@@ -46,9 +46,9 @@
                 if($LesStages->PARTICIPATIONCCF=="0"){
                     $participation="non";
                 }
-                   echo'<tr><td>'.$LesStages->ANNEESCOL.'</td><td>'.$LesStages->NOMETUDIANT." ".$LesStages->PRENOMETUDIANT.'</td><td>'.$LesStages->NOMPROF." ".$LesStages->PRENOMPROF.'</td>';
-                   echo'<td>'.$LesStages->NOM_ORGANISATION.'</td><td>'.$LesStages->NOMMAITRESTAGE." ".$LesStages->PRENOMMAITRESTAGE.'</td><td>'.$LesStages->DATEDEBUT.'</td><td>'.$LesStages->DATEFIN.'</td><td>'.$LesStages->DATEVISITESTAGE.'</td>';
-                   echo '<td>'.$LesStages->VILLE.'</td><td>'.$LesStages->DIVERS.'</td><td>'.$LesStages->BILANTRAVAUX.'</td><td>'.$LesStages->RESSOURCESOUTILS.'</td><td>'.$LesStages->COMMENTAIRES.'</td><td>'.$participation.'</td></tr>';
+                   echo'<tr><td>'.$LesStages->ANNEESCOL.'   </td><td>'.$LesStages->NOMETUDIANT." ".$LesStages->PRENOMETUDIANT.'   </td><td>'.$LesStages->NOMPROF." ".$LesStages->PRENOMPROF.'   </td>';
+                   echo'<td>'.$LesStages->NOM_ORGANISATION.'</td><td>'.$LesStages->NOMMAITRESTAGE." ".$LesStages->PRENOMMAITRESTAGE.'   </td><td>'.$LesStages->DATEDEBUT.'   </td><td>'.$LesStages->DATEFIN.'   </td><td>'.$LesStages->DATEVISITESTAGE.'    </td>';
+                   echo '<td>'.$LesStages->VILLE.'   </td><td>'.$LesStages->DIVERS.'   </td><td>'.$LesStages->BILANTRAVAUX.'   </td><td>'.$LesStages->RESSOURCESOUTILS.'   </td><td>'.$LesStages->COMMENTAIRES.'   </td><td>'.$participation.'   </td></tr>';
             }
         ?>      
         

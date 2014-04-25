@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class M_Utilisateurs extends Modele {
 	protected $table='PERSONNE';

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class M_ListeFormations extends Modele {
 	protected $table='PERSONNE';

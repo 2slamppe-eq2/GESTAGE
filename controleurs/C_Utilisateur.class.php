@@ -56,8 +56,8 @@ class C_Utilisateur extends Controleur{
         $lesParametres["PRENOM"] = $_POST["prenom"];
         $lesParametres["NUM_TEL"] = $_POST["tel"];
         $lesParametres["ADRESSE_MAIL"] = $_POST["mail"];
-        $lesParametres["ETUDES"] = $_POST["etudes"];
-        $lesParametres["FORMATION"] = $_POST["formation"];
+//        $lesParametres["ETUDES"] = $_POST["etudes"];
+//        $lesParametres["FORMATION"] = $_POST["formation"];
                        
         $ok = $utilisateur->update($_GET["id"], $lesParametres);
         if ($ok) {

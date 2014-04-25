@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class Vue{
 	private $fichier;
 	private $donnees;

@@ -1,10 +1,10 @@
-﻿
+
 <?php
 
 class C_Administrateur extends Controleur{
     
     
-    // Fonction d'affichage du formulaire de crÃ©ation d'un utilisateur.
+    // Fonction d'affichage du formulaire de création d'un utilisateur.
     function creerUtilisateur(){
         $this->vue->titreVue = 'Cr&eacute;ation d\'un utilisateur';   
         
@@ -30,23 +30,29 @@ class C_Administrateur extends Controleur{
         $this->vue->afficher();
     }
     
-    //validation de crÃ©ation d'utilisateur 
+    //validation de création d'utilisateur 
     function validationcreerutilisateur(){
         $this->vue->titreVue = "Validation cr&eacute;ation de l'utilisateur";
         $utilisateur = new M_LesDonneesCreationUtilisateur();
-        // prÃ©parer la liste des paramÃ¨tres
+        $contactOrganisation = new M_LesDonneesCreationContactOrganisation();
+        // préparer la liste des paramètres
         $lesParametres = array();
+        $lesParametresContactOrganisation = array();
         $lesLogin = new M_ListeLogin();
         $countLog="";
         $countLog= $lesLogin->getCount($_POST["login"]);
         //$this->vue->ListeLogin = $lesLogin->getCountLogin($_POST["login"]);
         $msg='';    
-        //vÃ©rifie si le login est prÃ©sent dans la base de donnÃ©e si il ne l'est pas l'utilisateur est crÃ©Ã©
+        //vérifie si le login est présent dans la base de donnée si il ne l'est pas l'utilisateur est créé
        
       if($countLog->NB=="0"){
-         
-        $lesParametres[0] = $utilisateur->getId('IDSPECIALITE', 'SPECIALITE', 'IDSPECIALITE', $_POST["option"]);
-        
+        if(isset($_POST["option"])){
+            $option = $utilisateur->getId('IDSPECIALITE', 'SPECIALITE', 'IDSPECIALITE', $_POST["option"]);
+        }else{
+            $option = "";
+        }
+            
+        $lesParametres[0] = $option;        
         $lesParametres[1] = $utilisateur->getId('IDROLE', 'ROLE', 'LIBELLE', $_POST["role"]);
         $lesParametres[2] = $_POST["civilite"];  
         $lesParametres[3] = $_POST["nom"];
@@ -59,25 +65,41 @@ class C_Administrateur extends Controleur{
         $lesParametres[9] = $_POST["formation"];
         
         $lesParametres[10] = $_POST["login"];
-        $lesParametres[11] = sha1($_POST["mdp"]);
-          
+        $lesParametres[11] = sha1($_POST["mdp"]);        
         $ok = $utilisateur->insert($lesParametres);
+        
       }else{
-          $msg=' Login dÃ©jÃ  utilisÃ©';
+          $msg=' Login déjà utilisé';
           $ok=0;
       }
-      
+        if($utilisateur->getId('IDROLE', 'ROLE', 'LIBELLE', $_POST["role"])==5){
+            $lesParametresContactOrganisation["IDORGANISATION"] = $contactOrganisation->getId('IDORGANISATION', 'ORGANISATION', 'IDORGANISATION', $_POST["organisation"]);
+            $lesParametresContactOrganisation["IDCONTACT"] = intval($ok);
+            $lesParametresContactOrganisation["FONCTION"] = $_POST["fonction"];
+            $okContact = $contactOrganisation->insertSansClePrimaire($lesParametresContactOrganisation);
+            
+        }
         if ($ok) {
             $this->vue->message = "Utilisateur cr&eacute;&eacute;";
+            if($utilisateur->getId('IDROLE', 'ROLE', 'LIBELLE', $_POST["role"])==5){
+                if($okContact){
+                    $this->vue->message.="<br> Contact Oragnisation cr&eacute;&eacute;";
+                }else{
+                    $this->vue->message.="<br> Echec de l'ajout du contact;";
+                }
+                
+           }
+                
+            
         } else {
             $this->vue->message = "Echec de l'ajout de l'utilisateur".$msg;
         }
         $this->vue->afficher();
     }
    
-      //affichage des Ã©tudiant
+      //affichage des étudiant
     function afficherEleve(){
-        $this->vue->titreVue = 'Tout les Ã©lÃ¨ves';   
+        $this->vue->titreVue = 'Tout les élèves';   
         
         $this->vue->loginAuthentification = MaSession::get('login');
         

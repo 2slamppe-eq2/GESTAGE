@@ -1,18 +1,24 @@
 //fonction de choix de roles
     function ChoixRole(){
         
-        $monSelect=document.getElementById('role');//rÃ©cupÃ©ration de la valeur du roles
-        $monDiv= document.getElementById('Formulaire_Etudiant');//formulaire qui sera modifier par la fonction
-      
+        monSelect=document.getElementById('role');//rÃ©cupÃ©ration de la valeur du roles
+        monDivEtudiant= document.getElementById('Formulaire_Etudiant');//formulaire qui sera modifier par la fonction
+        monDivMaitreStage = document.getElementById('Formulaire_Maitre_Stage');
        
-      switch($monSelect.value){
+      switch(monSelect.value){
           case 'Etudiant'://affiche les option pour un Ã©tudiant
-              $monDiv.style.visibility='visible';
-              $monDiv.style.height="100%";
+              monDivEtudiant.style.visibility='visible';
+              monDivEtudiant.style.height="150px";
+              break;
+              case 'Maitre de stage':
+              monDivMaitreStage.style.visibility='visible';
+              monDivMaitreStage.style.height="130px";
               break;
           default://laisse les option cachÃ© pour tout autres utilisateur
-              $monDiv.style.visibility='hidden';
-              $monDiv.style.height="0";
+              monDivEtudiant.style.visibility='hidden';
+              monDivEtudiant.style.height="0";
+              monDivMaitreStage.style.visibility='hidden';
+              monDivMaitreStage.style.height="0";
                
         
                 
@@ -21,15 +27,15 @@
     
     function Trier(){
         
-        $text = document.getElementById('recherche');
-        $monDiv = document.getElementById('tableauStageDefaut');
+        text = document.getElementById('recherche');
+        monDiv = document.getElementById('tableauStageDefaut');
         
         if($text.value==""){
-            $monDiv.style.visibility = 'visible';
-            $monDiv.style.height = "100%";
+            monDiv.style.visibility = 'visible';
+            monDiv.style.height = "100%";
             
         }else{
-            $monDiv.style.visibility = 'hidden';
+            monDiv.style.visibility = 'hidden';
         }
     }  
     

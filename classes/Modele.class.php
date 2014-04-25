@@ -1,8 +1,8 @@
 ﻿<?php
 
-define('DSN', 'mysql:host=localhost;dbname=GESTAGE');
-define('USER', 'root');
-define('MDP', 'joliverie');
+define('DSN', 'mysql:host=localhost;dbname=aballenghien_gestage');
+define('USER', 'aballeng_gestage');
+define('MDP', 'aballenghien');
 
 abstract class Modele {
 
@@ -202,8 +202,10 @@ abstract class Modele {
      * @param type $tabValeurs : tableau indexÃ© des valeurs Ã  intÃ©grer Ã  la requÃªte (sans l'identifiant)
      * @return boolean : succÃ¨s/Ã©chec de l'insertion
      */
-    function insert($tabValeurs) {
+    function insert($tabValeurs) {        
         $pdo = $this->connecter();
+        try{
+        $pdo->beginTransaction();
         $query = "INSERT INTO " . $this->table . " VALUES ( null";
         // Pour chaque valeur Ã  ajouter dans l'enregistrement, insÃ©rer un ?
         for ($i = 0; $i < count($tabValeurs); $i++) {
@@ -213,7 +215,35 @@ abstract class Modele {
         
         $queryPrepare = $pdo->prepare($query);
         $retour = $queryPrepare->execute($tabValeurs);
+        $retour = $pdo->lastInsertId();
+        $pdo->commit();
+        }catch(PDOException $e){
+            $pdo->rollback();
+        }
         $this->deconnecter();
+        
+        return $retour;
+    }
+    
+    function insertSansClePrimaire($tabValeurs) {        
+        $pdo = $this->connecter();
+        try{
+        $pdo->beginTransaction();
+        $query = "INSERT INTO " . $this->table . " VALUES (? ";
+        // Pour chaque valeur Ã  ajouter dans l'enregistrement, insÃ©rer un ?
+        for ($i = 0; $i < (count($tabValeurs)-1); $i++) {
+            $query.= ",?";
+        }
+        $query.= " ) ";
+        
+        $queryPrepare = $pdo->prepare($query);
+        $retour = $queryPrepare->execute($tabValeurs);
+        $pdo->commit();
+        }catch(PDOException $e){
+            $pdo->rollback();
+        }
+        $this->deconnecter();
+        
         return $retour;
     }
 
