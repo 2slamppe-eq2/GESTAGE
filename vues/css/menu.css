@@ -1,0 +1,60 @@
+/* 
+    Document   : menu
+    Created on : 25 avr. 2014, 09:40:01
+    Author     : btssio
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+nav hr
+{
+    
+    color:#787889;
+    
+}
+
+nav{
+    float: left;
+    display: block;
+    text-align: left;
+    width: 300px;
+    
+}
+
+.onglet{
+    list-style-type: disc;
+    list-style-image: url(puce.gif);
+    list-style-position: inside;
+}
+
+.menugauche{
+   list-style-type: none; 
+}
+
+nav li:hover{
+    
+    
+    list-style-image: url(puce1.gif);
+}
+nav li{
+   
+    line-height: 30px;
+}
+
+nav a{
+    font-size: 1.3em;
+    color: #181818;
+    padding-bottom: 2px;
+    text-decoration: none;
+}
+
+nav a:hover{
+    color: #737799;
+    border-bottom: 2px inset #737799;
+    
+}
+

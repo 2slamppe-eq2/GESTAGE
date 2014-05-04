@@ -4,6 +4,9 @@
     <head>
         <meta  content="text/html;charset=UTF-8" />
         <link rel="stylesheet" href="../vues/css/styleLargeurFixe.css" />
+        <link rel="stylesheet" href="../vues/css/entete.css" />
+        <link rel="stylesheet" href="../vues/css/menu.css" />
+        <link rel="stylesheet" href="../vues/css/centre.css" />
         <title><?php echo $this->titreVue; ?></title>
     </head>
     <body>

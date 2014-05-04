@@ -7,6 +7,8 @@
     <p><b>Menu</b></p><p class="note">
     <li><a href="./index.php" >Accueil</a></li>
     <hr/>
+</ul>
+<ul class="onglet">
     <?php
     if (isset($this->loginAuthentification)){  
         echo "<h6>".$this->loginAuthentification."</h6>";

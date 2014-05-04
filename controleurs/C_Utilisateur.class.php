@@ -65,7 +65,17 @@ class C_Utilisateur extends Controleur{
         } else {
             $this->vue->message = "Echec des modifications";
         }
-        $this->vue->afficher();
+        $this->vue->entete = "../vues/templates/entete.inc.php"; 
+                
+        $this->vue->gauche = "../vues/templates/gauche.inc.php"; 
+        
+        $this->vue->centre = "../vues/utilisateur/templates/message.inc.php";
+        
+        $this->vue->pied = "../vues/templates/pied.inc.php";
+        
+        $this->vue->loginAuthentification = MaSession::get('login');
+        
+        $this->vue->afficher(); 
         
     }
     // affichage du choix de l'affichage des entrepris
@@ -187,7 +197,17 @@ class C_Utilisateur extends Controleur{
         } else {
             $this->vue->message = "Echec de l'ajout de l'entreprise.".$msg;
         }
-        $this->vue->afficher();
+        $this->vue->entete = "../vues/templates/entete.inc.php"; 
+                
+        $this->vue->gauche = "../vues/templates/gauche.inc.php"; 
+        
+        $this->vue->centre = "../vues/utilisateur/templates/message.inc.php";
+        
+        $this->vue->pied = "../vues/templates/pied.inc.php";
+        
+        $this->vue->loginAuthentification = MaSession::get('login');
+        
+        $this->vue->afficher(); 
     }
     //mettre a jours les information d'une entreprise
     function majEntreprise(){
@@ -236,7 +256,17 @@ class C_Utilisateur extends Controleur{
         } else {
             $this->vue->message = "Echec des modifications";
         }
-        $this->vue->afficher();
+        $this->vue->entete = "../vues/templates/entete.inc.php"; 
+                
+        $this->vue->gauche = "../vues/templates/gauche.inc.php"; 
+        
+        $this->vue->centre = "../vues/utilisateur/templates/message.inc.php";
+        
+        $this->vue->pied = "../vues/templates/pied.inc.php";
+        
+        $this->vue->loginAuthentification = MaSession::get('login');
+        
+        $this->vue->afficher(); 
         
     }
     // affiche la premiere page d'ajout d'un stage      
@@ -346,7 +376,17 @@ class C_Utilisateur extends Controleur{
         } else {
             $this->vue->message = "Echec lors de l'ajout";
         }
-        $this->vue->afficher();
+        $this->vue->entete = "../vues/templates/entete.inc.php"; 
+                
+        $this->vue->gauche = "../vues/templates/gauche.inc.php"; 
+        
+        $this->vue->centre = "../vues/utilisateur/templates/message.inc.php";
+        
+        $this->vue->pied = "../vues/templates/pied.inc.php";
+        
+        $this->vue->loginAuthentification = MaSession::get('login');
+        
+        $this->vue->afficher(); 
         
     }
     //page d'affichage des stages

@@ -211,11 +211,13 @@ abstract class Modele {
         for ($i = 0; $i < count($tabValeurs); $i++) {
             $query.= ",?";
         }
-        $query.= " ) ";
+        $query.= " ); ";
         
         $queryPrepare = $pdo->prepare($query);
         $retour = $queryPrepare->execute($tabValeurs);
+        //var_dump($pdo->errorInfo());
         $retour = $pdo->lastInsertId();
+        
         $pdo->commit();
         }catch(PDOException $e){
             $pdo->rollback();
@@ -229,7 +231,7 @@ abstract class Modele {
         $pdo = $this->connecter();
         try{
         $pdo->beginTransaction();
-        $query = "INSERT INTO " . $this->table . " VALUES (? ";
+        $query = "INSERT INTO " . $this->table . " VALUES (?";
         // Pour chaque valeur Ã  ajouter dans l'enregistrement, insÃ©rer un ?
         for ($i = 0; $i < (count($tabValeurs)-1); $i++) {
             $query.= ",?";

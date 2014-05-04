@@ -47,12 +47,12 @@ class C_Administrateur extends Controleur{
        
       if($countLog->NB=="0"){
         if(isset($_POST["option"])){
-            $option = $utilisateur->getId('IDSPECIALITE', 'SPECIALITE', 'IDSPECIALITE', $_POST["option"]);
+            $option = $_POST["option"];
         }else{
             $option = "";
         }
             
-        $lesParametres[0] = $option;        
+        $lesParametres[0] = null;        
         $lesParametres[1] = $utilisateur->getId('IDROLE', 'ROLE', 'LIBELLE', $_POST["role"]);
         $lesParametres[2] = $_POST["civilite"];  
         $lesParametres[3] = $_POST["nom"];
@@ -61,21 +61,29 @@ class C_Administrateur extends Controleur{
         $lesParametres[6] = $_POST["mail"];
         $lesParametres[7] = $_POST["telP"];
         
-        $lesParametres[8] = $_POST["etudes"];
-        $lesParametres[9] = $_POST["formation"];
+        $lesParametres[8] = "";
+        $lesParametres[9] = "";
         
         $lesParametres[10] = $_POST["login"];
-        $lesParametres[11] = sha1($_POST["mdp"]);        
+        $lesParametres[11] = sha1($_POST["mdp"]);
+        
+        if($_POST["role"]=="Etudiant"){
+           $lesParametres[0] = $option;
+           $lesParametres[8] = $_POST["etudes"];
+           $lesParametres[9] = $_POST["formation"];
+           
+        }
         $ok = $utilisateur->insert($lesParametres);
+        
         
       }else{
           $msg=' Login déjà utilisé';
           $ok=0;
       }
         if($utilisateur->getId('IDROLE', 'ROLE', 'LIBELLE', $_POST["role"])==5){
-            $lesParametresContactOrganisation["IDORGANISATION"] = $contactOrganisation->getId('IDORGANISATION', 'ORGANISATION', 'IDORGANISATION', $_POST["organisation"]);
-            $lesParametresContactOrganisation["IDCONTACT"] = intval($ok);
-            $lesParametresContactOrganisation["FONCTION"] = $_POST["fonction"];
+            $lesParametresContactOrganisation[0] = $_POST["organisation"];
+            $lesParametresContactOrganisation[1] = $ok;
+            $lesParametresContactOrganisation[2] = $_POST["fonction"];
             $okContact = $contactOrganisation->insertSansClePrimaire($lesParametresContactOrganisation);
             
         }
@@ -94,7 +102,17 @@ class C_Administrateur extends Controleur{
         } else {
             $this->vue->message = "Echec de l'ajout de l'utilisateur".$msg;
         }
-        $this->vue->afficher();
+        $this->vue->loginAuthentification = MaSession::get('login');
+        
+        $this->vue->entete = "../vues/templates/entete.inc.php"; 
+                
+        $this->vue->gauche = "../vues/templates/gauche.inc.php"; 
+        
+        $this->vue->centre = "../vues/utilisateur/templates/message.inc.php";
+        
+        $this->vue->pied = "../vues/templates/pied.inc.php";
+        
+        $this->vue->afficher(); 
     }
    
       //affichage des étudiant

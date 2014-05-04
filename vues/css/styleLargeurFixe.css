@@ -15,39 +15,8 @@ section{
 h1{
     font-size: 2.5em;
 }
-h1#Titreappli{
-    font-size: 2.5em;
-    padding-left: 11px;
-}
 
-nav{
-    float: left;
-    display: block;
-    text-align: left;
-    width: 250px;
-}
 
-nav ul{
-    list-style-type: none;
-}
-
-nav li{
-    display: inline-block;
-    margin-right: 15px;
-    padding-bottom: 5px;
-}
-
-nav a{
-    font-size: 1.3em;
-    color: #181818;
-    padding-bottom: 2px;
-    text-decoration: none;
-}
-
-nav a:hover{
-    color: #760001;
-    border-bottom: 2px solid #760001;
-}
 
 form {
 	overflow: hidden;
@@ -66,7 +35,7 @@ input,select{
 	margin-bottom: 15px;
 }
 
-}
+
 /*bordure des champs de connection*/
 fieldset{
     -webkit-border-radius: 10px;

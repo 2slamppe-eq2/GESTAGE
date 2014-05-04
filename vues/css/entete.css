@@ -1,0 +1,39 @@
+/* 
+    Document   : entete
+    Created on : 25 avr. 2014, 09:40:13
+    Author     : btssio
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+@font-face {
+    font-family: "comingsoon";
+    src: url('ComingSoon.ttf');
+}
+#Titreappli{
+    
+    font-size: 2.5em;
+    padding-left: 11px;
+    font-family: "comingsoon";
+    color:#A3A7C9;
+    text-shadow: 0 1px 0 #9B9FC1,
+             0 2px 0 #9397B9,
+             -1px 3px 0 #8B8FB1,
+             -1px 4px 0 #8387A9,
+             -2px 5px 0 #7B7FA1,
+             -2px 6px 0 #737799,
+             -2px 7px 2px rgba(0,0,0, 0.6),
+             -2px 7px 8px rgba(0,0,0, 0.2),
+             -2px 7px 45px rgba(0,0,0, 0.4);
+}
+
+header{
+    background-image:linear-gradient(#FFFFFF,#CBCFD7) ;
+} 
+
+
+
+
